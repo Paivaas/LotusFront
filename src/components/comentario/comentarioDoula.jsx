@@ -81,7 +81,7 @@ const Comentarios = () => {
                         icon: "success"
                     });
 
-                   window.location.reload();
+                  //window.location.reload();
 
                     // setTimeout(() => {
                     //     window.location.reload(); // Força o reload após o delay

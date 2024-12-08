@@ -79,7 +79,7 @@ export default function Termos() {
                         violou estes Termos de Uso.</p>
                 </div>
 
-                <p>Você tiver alguma dúvida sobre estes Termos de Uso, entre em contato conosco através do e-mail [inserir e-mail de contato].</p>
+                <p>Você tiver alguma dúvida sobre estes Termos de Uso, entre em contato conosco através do e-mail <span className="text-pink-3">mommycare.lotus@gmail.com</span>.</p>
             </div>
 
         </div>

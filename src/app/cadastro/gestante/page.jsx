@@ -4,6 +4,7 @@ import Image from "next/image";
 import Swal from 'sweetalert2';
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
+import { useRouter } from 'next/navigation';
 
 //Components
 import AddPhoto from "@/components/addPhoto";
@@ -11,20 +12,17 @@ import AddPhoto from "@/components/addPhoto";
 // Import das imagens 
 import LotusIcon from "@/public/icons/utilities/lotus-icon.svg";
 import CheckIcon from "@/public/icons/utilities/check-white.svg"
-import EmailIcon from "@/public/icons/profile-information/grey/email.svg"
-import ArrowIcon from "@/public/icons/utilities/arrow-white.svg"
 import CircleDegrade from "@/public/icons/utilities/circle-degrade.svg"
-import CameraIcon from "@/public/icons//profile-information/grey/camera.svg"
 import UserCheckIcon from "@/public/icons/profile-information/grey/user-check.svg"
 import CakeIcon from "@/public/icons/profile-information/grey/birthday-cake.svg"
 import ClipboardIcon from "@/public/icons/profile-information/grey/profession-edit-clipboard.svg"
 import BabyIcon from "@/public/icons/profile-information/grey/baby.svg"
 import CalendarIcon from "@/public/icons/profile-information/grey/calendar.svg"
-import BloodIcon from "@/public/icons/profile-information/grey/blood-type.svg"
 
 export default function RegisterDoula() {
 
     const [cpf, setCpf] = useState('');
+    const router = useRouter();
 
     //funcao que verifica se o CPF é valido
     const isValidCPF = (cpf) => {
@@ -51,7 +49,13 @@ export default function RegisterDoula() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isValidCPF(cpf)) {
-            alert('CPF válido!');
+            Swal.fire({
+                icon: "success",
+                title: "Cadastro realizado com sucesso!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              router.push('/login');
         } else {
             Swal.fire({
                 icon: "warning",

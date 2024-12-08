@@ -67,20 +67,18 @@ export default function HomePageGestante() {
 
                     <div className="p-4 flex w-[85vw] max-xl:flex-col">
 
-                        <div className="max-xl:w-full max-xl:h-1/4 max-md:p-0   w-1/2 h-full flex flex-col justify-between p-6">
+                            <div className="max-xl:w-full max-xl:h-1/4 max-md:p-0   w-1/2 h-full flex flex-col justify-between p-6">
 
-                            <div>
-                                <h1 className="font-ABeeZee text-xl text-gray-4">Ola, sempre bom te ver!</h1>
-                            
-                                <p className="font-ABeeZee text-gray-3">Na maternidade, cada dia é uma nova chance de aprender, amar e crescer juntos.</p>
-                            </div>
+                                <div>
+                                    <h1 className="font-ABeeZee text-xl text-gray-4">Olá, sempre bom te ver!</h1>
+                                    <p className="font-ABeeZee text-gray-3">Na maternidade, cada dia é uma nova chance de aprender, amar e crescer juntos.</p>
+                                </div>
 
                             <div className="  max-xl:px-0  max-md:gap-2   flex max-xl:flex-row flex-col gap-6 space-x-2 px-16 max-xl:w-full  ">
                                 <button
                                     className="max-xl:w-1/2 max-xl:h-14 hover:border-b-4 hover:border-orange-3 ease-out duration-300 bg-white rounded-3xl text-slate-900 h-28 justify-between drop-shadow-lg px-4 flex items-center text-white"
                                     onClick={() => setSelectedComponent("agenda")}
                                 >
-
                                     <div className="flex ">
                                         <Image className="w-[3vw] max-xl:w-4" alt="" src={
                                             AgendaOrange
@@ -101,7 +99,6 @@ export default function HomePageGestante() {
                                     className="max-xl:w-1/2 max-xl:h-14 hover:border-b-4 hover:border-pink-3 bg-white ease-out duration-300 rounded-3xl text-slate-900 h-28 justify-between drop-shadow-lg px-4 flex items-center text-white"
                                     onClick={() => setSelectedComponent("checklist")}
                                 >
-
                                     <div className="flex">
                                         <Image className="w-[3vw] max-xl:w-4" alt="" src={
                                             ChecklistIcon

@@ -31,7 +31,7 @@ const DoulaInfo = () => {
       {doula ? (
         <div className='flex items-center gap-2 font-bold'>
           <img 
-            src={fallbackImage || doula.foto_doula}
+            src="https://st2.depositphotos.com/4994741/11321/i/450/depositphotos_113216666-stock-photo-woman-portrait-on-the-street.jpg"
             className="h-10 w-10 rounded-full" 
             alt={`${doula.nome_doula} foto`}  />
           <h2>{doula.nome_doula} {doula.sobrenome_doula}</h2>

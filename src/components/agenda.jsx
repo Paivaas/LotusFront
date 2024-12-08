@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import Swal from 'sweetalert2';
 import Loading from '@/components/loading';
 import { DegradeOrange, DegradePink, DegradeRed } from '@/components/degrade';
-
+import Calendario2 from '@/components/calendario2'
 
 
 // Calendário
@@ -34,29 +34,29 @@ const Agenda = () => {
                 const date = document.getElementById("swal-input3").value;
                 const time = document.getElementById("swal-input4").value;
                 const userId = document.getElementById("swal-input5").value;
-    
+
                 if (!title || !description || !date || !time || !userId) {
                     Swal.showValidationMessage("Todos os campos são obrigatórios!");
                     return false;
                 }
-    
+
                 const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Valida YYYY-MM-DD
                 const timeRegex = /^\d{2}:\d{2}(:\d{2})?$/; // Valida HH:mm ou HH:mm:ss
-    
+
                 if (!dateRegex.test(date)) {
                     Swal.showValidationMessage("A data deve estar no formato YYYY-MM-DD!");
                     return false;
                 }
-    
+
                 if (!timeRegex.test(time)) {
                     Swal.showValidationMessage("O horário deve estar no formato HH:mm ou HH:mm:ss!");
                     return false;
                 }
-    
+
                 return { title, description, date, time, userId: parseInt(userId, 10) };
             },
         });
-    
+
         if (formValues) {
             try {
                 const response = await fetch("https://lotus-back-end.onrender.com/v1/Lotus/agenda", {
@@ -71,9 +71,9 @@ const Agenda = () => {
                         usuario_calendario_id: formValues.userId,
                     }),
                 });
-    
+
                 const data = await response.json();
-    
+
                 if (response.ok) {
                     Swal.fire("Sucesso!", "Evento adicionado com sucesso.", "success");
                     setItems((prevItems) => [...prevItems, formValues]);
@@ -86,30 +86,32 @@ const Agenda = () => {
         }
     };
 
-    
+
     return (
         <div className=" animate-flip-up animate-once animate-duration-500 animate-ease-linear  h-full  flex flex-col rounded-3xl drop-shadow-lg bg-white">
-            
+
             <DegradeOrange></DegradeOrange>
-            
+
             <div className="px-14 py-6 flex flex-col items-center justify-center">
                 <div className="text-gray-4 w-full h-16 font-ABeeZee border-b-4 border-zinc-200 text-2xl flex items-center justify-between mb-6">
                     <h1>Agenda</h1>
-                    <button
+                    {/* <button
                         onClick={showAlert}
                         className="bg-orange-2 text-white font-ABeeZee rounded-full text-sm px-4 py-2 hover:bg-orange-3"
                         disabled={loading} // Desabilita durante o carregamento
                     >
                         {loading ? "Carregando..." : "Adicionar evento +"}
-                    </button>
+                    </button> */}
                 </div>
 
-                <Calendar></Calendar>
+                <div className="text-gray-3">
+                    <Calendario2></Calendario2>
+                </div>
 
                 <ul>
                     {items.map((item, index) => (
                         <li key={index}>
-                         <strong>{item.title}</strong>: {item.description} em {item.date} às {item.time}
+                            <strong>{item.title}</strong>: {item.description} em {item.date} às {item.time}
                         </li>
                     ))}
                 </ul>

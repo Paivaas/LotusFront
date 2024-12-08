@@ -7,6 +7,7 @@ import logo from "@/public/icons/utilities/lotus-icon.svg";
 
 //Import dos componentes do nav
 import { PerfilDoula, PerfilDoulaAtivo } from '@/components/nav/perfil';
+import Cegonha from "@/public/img/Cegonha.svg"
 import { Logout } from '@/components/nav/logout';
 import { NavTop } from '@/components/nav/navTop';
 import CheckList from '@/components/checkList';
@@ -46,14 +47,27 @@ export default function Home() {
       <main className="w-full h-full bg-gray-1 rounded-2xl">
 
 
-        <section className="w-full h-full flex p-6 gap-3">
+        <section className="w-full h-full flex flex-col p-6 gap-3">
 
           {/* Adicione o conteudo aqui */}
 
+          <div>
+            <h1 className="font-ABeeZee text-xl text-gray-4">Olá, sempre bom te ver!</h1>
+            <p className="font-ABeeZee text-gray-3">Na maternidade, cada dia é uma nova chance de aprender, amar e crescer juntos.</p>
+          </div>
+
+          <div className="w-full h-full">
+            <div className="text-gray-400 flex flex-col h-full justify-center items-center ">
 
 
+              <Image className="w-1/2 max-xl:w-1/4" alt="" src={
+                Cegonha
+              }></Image>
 
+              <h1 className="font-ABeeZee text-pink-3 text-2">Lotus. Maternidade</h1>
 
+            </div>
+          </div>
 
         </section>
 

@@ -288,9 +288,9 @@ export default function Login(minhaVariavel) {
       <div className="h-full w-1/3 max-xl:w-0 max-xl:hidden">
 
         <div className="w-full h-1/3 flex align-top justify-end">
-          <Image className="w-[500px] h-[500px] relative bottom-24 left-24" alt="Email Icon" src={CircleDegrade}></Image>
+          <Image className="max-tcc:bottom-44 w-[500px] h-[500px] relative bottom-24 left-24" alt="Email Icon" src={CircleDegrade}></Image>
         </div>
-        <div className="w-full h-1/3 flex items-center relative">
+        <div className="max-tcc:right-28 w-full h-1/3 flex items-center relative">
           <span className="w-[250px] h-[250px] animate-jump-in animate-infinite animate-duration-[6000ms] animate-alternate rounded-full relative bg-pink-3 opacity-40 flex items-center justify-center"></span>
           <Image className="w-[250px] h-[250px] rounded-full relative right-[250px]" alt="Email Icon" src={CircleDegrade}></Image>
         </div>

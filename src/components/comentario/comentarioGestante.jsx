@@ -86,9 +86,9 @@ const Comentarios = () => {
           });
 
 
-          setTimeout(() => {
-            window.location.reload(); // Força o reload após o delay
-          }, 2000); 
+          // setTimeout(() => {
+          //   window.location.reload(); // Força o reload após o delay
+          // }, 2000); 
 
 
         } else {
@@ -120,9 +120,9 @@ const Comentarios = () => {
         });
       
         
-        setTimeout(() => {
-          window.location.reload(); // Força o reload após o delay
-        }, 2000); 
+        // setTimeout(() => {
+        //   window.location.reload(); // Força o reload após o delay
+        // }, 2000); 
 
 
       } else {
@@ -168,7 +168,7 @@ const Comentarios = () => {
             icon: "success"
           });
           fetchDados(); // Atualizar a lista de produtos
-          window.location.reload();
+         // window.location.reload();
         } else {
           Swal.fire("Erro enviar seu comentário...");
         }
@@ -238,9 +238,9 @@ const Comentarios = () => {
           icon: "success"
         });
 
-         setTimeout(() => {
-          window.location.reload(); // Força o reload após o delay
-        }, 2000); 
+        //  setTimeout(() => {
+        //   window.location.reload(); // Força o reload após o delay
+        // }, 2000); 
         
         
       } catch (err) {
@@ -283,9 +283,9 @@ const Comentarios = () => {
         fetchEnxoval(); // Atualizar a lista de produto
         
 
-        setTimeout(() => {
-          window.location.reload(); // Força o reload após o delay
-        }, 2000); 
+        // setTimeout(() => {
+        //   window.location.reload(); // Força o reload após o delay
+        // }, 2000); 
 
 
       } catch (err) {

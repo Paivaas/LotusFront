@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import '@/../src/styles/Calendar.css';
 import axios from 'axios';
 import { IoAdd } from 'react-icons/io5';
+import Loading from '@/components/loading';
 
 export default function Calendario() {
   const [date, setDate] = useState(null);  // Inicializa com null para evitar erro de hidratação
@@ -14,6 +15,7 @@ export default function Calendario() {
   const [eventDate, setEventDate] = useState(null);
   const [eventTime, setEventTime] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);  // Estado para controlar o carregamento
 
   const apiUrl = "https://lotus-back-end.onrender.com/v1/Lotus/agenda";
 
@@ -24,6 +26,8 @@ export default function Calendario() {
       setEvents(response.data.agendaDados);
     } catch (error) {
       console.error("Erro ao buscar eventos:", error);
+    } finally {
+      setIsLoading(false);  // Quando a resposta chega ou erro ocorre, altera o estado de carregamento
     }
   };
 
@@ -68,46 +72,53 @@ export default function Calendario() {
   }, []);
 
   return (
-    <div>
-      {/* Calendário */}
-      {date && (
-        <Calendar 
-          onChange={setDate} 
-          value={date} 
-          minDate={new Date()} 
-          formatMonthYear={(locale, date) => date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}  // Formata mês/ano
-        />
-      )}
-
-      {/* Lista de eventos */}
-      <div className="flex flex-col gap-4 mt-6 overflow-auto max-h-[200px]">
-        {events.map((event, index) => (
-          <div key={index} className="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold">{event.descricao_calendario}</h3>
-              <p className="text-sm text-gray-600">
-                {event.data_calendario} - {event.horario_calendario}
-              </p>
-            </div>
-            <button className="text-red-500 font-semibold hover:underline">Remover</button>
-          </div>
-        ))}
-        {newEvents.map((event, index) => (
-          <div key={`new-${index}`} className="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center">
-            <div>
-              <h3 className="text-lg font-bold">{event.descricao_calendario}</h3>
-              <p className="text-sm text-gray-600">
-                {event.data_calendario} - {event.horario_calendario}
-              </p>
-            </div>
-            <button className="text-red-500 font-semibold hover:underline">Remover</button>
-          </div>
-        ))}
+    <div className='flex flex-col justify-center items-center'>
+      <div className='w-80'>
+        {/* Calendário */}
+        {date && (
+          <Calendar
+            onChange={setDate} 
+            value={date} 
+            minDate={new Date()} 
+            formatMonthYear={(locale, date) => date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}  // Formata mês/ano
+          />
+        )}
       </div>
+
+      <h1 className='w-full mt-8 pb-2 font-medium border-b-2'>Seus próximos compromissos:</h1>
+
+      {/* Mostrar o componente de loading enquanto os dados estão sendo carregados */}
+      {isLoading ? (
+        <div className="flex justify-center items-center w-full h-48">
+          <Loading /> {/* Exibe o componente de carregamento */}
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-4 mt-6 overflow-auto max-h-[200px]">
+          {events.map((event, index) => (
+            <div key={index} className="bg-white flex-col p-4 gap-2 rounded-lg shadow-lg flex justify-between items-start">
+              <div>
+                <h3 className="text-lg font-bold">{event.descricao_calendario}</h3>
+              </div>
+              <button className="text-orange-3 font-semibold">Remover</button>
+            </div>
+          ))}
+          {newEvents.map((event, index) => (
+            <div key={`new-${index}`} className="bg-white p-4 rounded-lg shadow-lg flex justify-between items-center">
+              <div>
+                <h3 className="text-lg font-bold">{event.descricao_calendario}</h3>
+                <p className="text-sm text-gray-600">
+                  {event.data_calendario} - {event.horario_calendario}
+                </p>
+              </div>
+              <button className="text-orange-3 font-semibold hover:underline">Remover</button>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex justify-center items-center bg-slate-200 rounded-3xl bg-opacity-50">
           <div className="bg-white p-6 rounded-lg w-96">
             <h3 className="text-lg font-semibold">Adicionar Evento</h3>
             <div className="flex flex-col gap-4 mt-4">
@@ -136,7 +147,7 @@ export default function Calendario() {
                 Cancelar
               </button>
               <button onClick={createEvent} className="bg-pink-3 text-white p-2 rounded-md">
-                Adicionar Evento
+                Adicionar
               </button>
             </div>
           </div>

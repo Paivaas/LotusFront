@@ -80,38 +80,91 @@ export default function Perfil() {
       <main className="w-full h-full bg-gray-1 rounded-2xl">
         <DegradeOrange />
         <section className="w-full h-full flex justify-center items-center">
+
           {isLoading ? (
             <Loading /> // Mostra o componente de loading enquanto os dados estão sendo carregados
           ) : doula ? (
-            <div className="flex flex-col items-center">
-              <img
-                className="w-80 rounded-full relative bottom-8"
-                src={selectedImage ? URL.createObjectURL(selectedImage) : doula.foto_doula}
-                alt="Foto Doula"
-                onError={handleImageError}
-              />
-              <h2 className="font-ABeeZee text-3xl text-gray-4">
-                Perfil de {doula.nome_doula} {doula.sobrenome_doula}
-              </h2>
-              
-              <div className="flex gap-4 bg-gray-2 rounded-xl p-4 border-2 border-gray-3 mt-4">
+            <div className=" relative bottom-80">
+              <div className="flex flex-col items-center gap-4 relative md:h-48" style={{ marginTop: '-63px' }}>
+                <div className="relative">
+                  <div className="bg-white h-48 w-48 lg:h-80 lg:w-80 rounded-full flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-40 w-40 lg:h-64 lg:w-64 rounded-full flex items-center justify-center bg-gray-1">
+                        <img
+                          src="https://st2.depositphotos.com/4994741/11321/i/450/depositphotos_113216666-stock-photo-woman-portrait-on-the-street.jpg"
+                          alt="Perfil"
+                          className="h-full w-full object-cover rounded-full"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              <p>
-                <strong>Email:</strong> {doula.email_doula}
-              </p>
+                <div className="text-center mt-2 max-md:h-4">
+                  <h1 className="text-[30px] flex text-gray-4 font-ABeeZee z-40  font-thin max-md:text-[22px]">
+                    {doula.nome_doula}
+                    <span className='w-3'></span>
+                    {doula.sobrenome_doula}
+                  </h1>
+                </div>
 
-              <p>
-                <strong>Tempo de Atuação:</strong> {doula.tempo_de_atuacao}
-              </p>
+                {/* DIV DE OPÇÕES PRINCIPAIS DO PERFIL */}
+                <div className="bg-gray-100 w-[800px] h-auto flex flex-col justify-around items-start mx-auto p-4 rounded-[13px] max-md:w-[80vw]">
 
+                  {/* Linha com Profissão e Data de Nascimento */}
+                  <div className="flex gap-4 w-full mb-4 max-md:flex-col max-md:gap-2">
 
-            </div>
+                    {/* Profissão */}
+                    <div className="flex items-center gap-4 bg-white p-4 rounded-[12px] border w-2/3 h-12 max-md:w-full">
+                      {/* <Image src={editprofissão} alt="Profissão" className="w-7 h-7" /> */}
+                      <div className="flex gap-2">
+                        <span className="text-gray-500">Email:</span>
+                       {doula.email_doula}
+                      </div>
+                    </div>
 
+                    {/* Data de Nascimento */}
+                    <div className="flex items-center gap-4 bg-white p-4 rounded-[12px] border w-1/3 h-12 max-md:w-full">
+                      {/* <Image src={cake} alt="Data de Nascimento" className="w-6 h-7" /> */}
+                      <div className="flex gap-2">
+                        <span className="text-gray-500">CPF:</span>
+                        {doula.cpf_doula}
+                      </div>
+                    </div>
 
+                  </div>
 
-            <p>
-              {doula.sobremim_doula}
-            </p>
+                  {/* Nome do Bebê */}
+                  <div className="flex items-center gap-4 bg-white p-4 rounded-[12px] border max-md:mb-2  w-full mb-4">
+                    {/* <Image src={baby} alt="Nome do Bebê" className="w-7 h-7" /> */}
+                    <div className="flex flex-col gap-2 items-center">
+                      <span className="text-gray-400 font-ABeeZee">Sobre mim:</span>
+                      <span className="text-gray-500">
+                         Sou uma doula dedicada e apaixonada por apoiar gestantes e suas
+                         famílias em uma das fases mais transformadoras da vida. Ao longo
+                         da minha carreira, o 
+                         parto e o pós-parto, garantindo que elas se sintam empoderadas e
+                         preparadas para cada etapa dessa jornada.
+
+                         Acredito que cada mulher tem o direito de viver uma experiência de 
+                         parto respeitosa, segura e única, independentemente do tipo de parto
+                          que escolha. Meu papel é ser uma presença constante e confiável.
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Data Prevista para o Parto */}
+                  <div className="flex items-center gap-4 bg-white p-4 rounded-[12px] border w-full h-12">
+                    {/* <Image src={calendar} alt="Data Prevista para o Parto" className="w-7 h-7" /> */}
+                    <div className="flex gap-2">
+                      <span className="text-gray-400 font-ABeeZee">Tempo de atuação:</span>
+                      <span className="text-gray-500">{doula.tempo_de_atuacao}</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
 
             </div>
           ) : (
